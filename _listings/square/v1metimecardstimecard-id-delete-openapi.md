@@ -1,0 +1,242 @@
+---
+swagger: "2.0"
+x-collection-name: Square
+x-complete: 0
+info:
+  title: Square Connect API Deletes a timecard. Deleted timecards are still accessible
+    from Connect API endpoints, but the value of their deleted field is set to true.
+    See Handling deleted timecards for more information.
+  description: Deletes a timecard. Deleted timecards are still accessible from Connect
+    API endpoints, but the value of their deleted field is set to true. See Handling
+    deleted timecards for more information.
+  termsOfService: https://connect.squareup.com/tos
+  contact:
+    name: Square Developer Platform
+    url: https://squareup.com/developers
+    email: developers@squareup.com
+  version: "2.0"
+host: connect.squareup.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v1/me:
+    get:
+      summary: Get a business's information.
+      description: Get a business's information.
+      operationId: RetrieveBusiness
+      x-api-path-slug: v1me-get
+      responses:
+        200:
+          description: OK
+      tags:
+      - Businesss
+      - Information
+  /v1/me/employees:
+    get:
+      summary: Provides summary information for all of a business's employees.
+      description: Provides summary information for all of a business's employees.
+      operationId: ListEmployees
+      x-api-path-slug: v1meemployees-get
+      parameters:
+      - in: query
+        name: batch_token
+        description: A pagination cursor to retrieve the next set of results for youroriginal
+          query to the endpoint
+      - in: query
+        name: begin_created_at
+        description: If filtering results by their created_at field, the beginning
+          of the requested reporting period, in ISO 8601 format
+      - in: query
+        name: begin_updated_at
+        description: If filtering results by their updated_at field, the beginning
+          of the requested reporting period, in ISO 8601 format
+      - in: query
+        name: end_created_at
+        description: If filtering results by their created_at field, the end of the
+          requested reporting period, in ISO 8601 format
+      - in: query
+        name: end_updated_at
+        description: If filtering results by there updated_at field, the end of the
+          requested reporting period, in ISO 8601 format
+      - in: query
+        name: external_id
+        description: If provided, the endpoint returns only employee entities with
+          the specified external_id
+      - in: query
+        name: limit
+        description: The maximum integer number of employee entities to return in
+          a single response
+      - in: query
+        name: order
+        description: The order in which employees are listed in the response, based
+          on their created_at field
+      - in: query
+        name: status
+        description: If provided, the endpoint returns only employee entities with
+          the specified status (ACTIVE or INACTIVE)
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provides
+      - Summary
+      - Information
+      - Of
+      - Businesss
+      - Employees
+  /v1/me/roles:
+    get:
+      summary: Provides summary information for all of a business's employee roles.
+      description: Provides summary information for all of a business's employee roles.
+      operationId: ListEmployeeRoles
+      x-api-path-slug: v1meroles-get
+      parameters:
+      - in: query
+        name: batch_token
+        description: A pagination cursor to retrieve the next set of results for youroriginal
+          query to the endpoint
+      - in: query
+        name: limit
+        description: The maximum integer number of employee entities to return in
+          a single response
+      - in: query
+        name: order
+        description: The order in which employees are listed in the response, based
+          on their created_at field
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provides
+      - Summary
+      - Information
+      - Of
+      - Businesss
+      - Employee
+      - Roles
+  /v1/me/timecards:
+    get:
+      summary: Provides summary information for all of a business's employee timecards.
+      description: Provides summary information for all of a business's employee timecards.
+      operationId: ListTimecards
+      x-api-path-slug: v1metimecards-get
+      parameters:
+      - in: query
+        name: batch_token
+        description: A pagination cursor to retrieve the next set of results for youroriginal
+          query to the endpoint
+      - in: query
+        name: begin_clockin_time
+        description: If filtering results by their clockin_time field, the beginning
+          of the requested reporting period, in ISO 8601 format
+      - in: query
+        name: begin_clockout_time
+        description: If filtering results by their clockout_time field, the beginning
+          of the requested reporting period, in ISO 8601 format
+      - in: query
+        name: begin_updated_at
+        description: If filtering results by their updated_at field, the beginning
+          of the requested reporting period, in ISO 8601 format
+      - in: query
+        name: deleted
+        description: If true, only deleted timecards are returned
+      - in: query
+        name: employee_id
+        description: If provided, the endpoint returns only timecards for the employee
+          with the specified ID
+      - in: query
+        name: end_clockin_time
+        description: If filtering results by their clockin_time field, the end of
+          the requested reporting period, in ISO 8601 format
+      - in: query
+        name: end_clockout_time
+        description: If filtering results by their clockout_time field, the end of
+          the requested reporting period, in ISO 8601 format
+      - in: query
+        name: end_updated_at
+        description: If filtering results by their updated_at field, the end of the
+          requested reporting period, in ISO 8601 format
+      - in: query
+        name: limit
+        description: The maximum integer number of employee entities to return in
+          a single response
+      - in: query
+        name: order
+        description: The order in which timecards are listed in the response, based
+          on their created_at field
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provides
+      - Summary
+      - Information
+      - Of
+      - Businesss
+      - Employee
+      - Timecards
+  /v1/me/timecards/{timecard_id}:
+    delete:
+      summary: Deletes a timecard. Deleted timecards are still accessible from Connect
+        API endpoints, but the value of their deleted field is set to true. See Handling
+        deleted timecards for more information.
+      description: Deletes a timecard. Deleted timecards are still accessible from
+        Connect API endpoints, but the value of their deleted field is set to true.
+        See Handling deleted timecards for more information.
+      operationId: DeleteTimecard
+      x-api-path-slug: v1metimecardstimecard-id-delete
+      parameters:
+      - in: path
+        name: timecard_id
+        description: The ID of the timecard to delete
+      responses:
+        200:
+          description: OK
+      tags:
+      - S
+      - Timecard
+      - ""
+      - D
+      - Timecards
+      - Are
+      - Still
+      - Accessible
+      - From
+      - Connect
+      - Endpoints
+      - ""
+      - But
+      - Value
+      - Of
+      - Their
+      - Deleted
+      - Field
+      - Is
+      - Set
+      - To
+      - "True"
+      - ""
+      - See
+      - Handling
+      - Deleted
+      - Timecardsmore
+      - Information
+x-streamrank:
+  polling_total_time_average: 0
+  polling_size_download_average: 0
+  streaming_total_time_average: 0
+  streaming_size_download_average: 0
+  change_yes: 0
+  change_no: 0
+  time_percentage: 0
+  size_percentage: 0
+  change_percentage: 0
+  last_run: ""
+  days_run: 0
+  minute_run: 0
+---
